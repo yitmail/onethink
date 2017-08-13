@@ -1,0 +1,24 @@
+<extend name="Base/base" />
+
+<block name="content">
+    <div class="container-fluid">
+        <volist name="list" id="data">
+        <div class="row noticeList">
+
+            <a href="notice-detail.html">
+                <div class="col-xs-2">
+                    <a href="{:U('Notice/detail?id='.$data['id'])}">
+                        <img class="img-rounded img-responsive" src="{:get_cover($data['cover_id'],$field=path)}" />
+                    </a>
+                </div>
+                <div class="col-xs-10">
+                    <p class="title"><a href="{:U('Notice/detail?id='.$data['id'])}">{$data.title}</a></p>
+                    <p class="intro">{$data.description}</p>
+                    <p class="info">浏览: {$data.view}<span class="pull-right">
+                        {$data.create_time|date='Y-m-d H:i:s',###}</span> </p>
+                </div>
+            </a>
+        </div>
+        </volist>
+    </div>
+</block>
